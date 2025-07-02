@@ -4,6 +4,7 @@ import sqlite3
 import time
 
 app = Flask(__name__)
+init_db()  # 確保部署後會自動建立資料庫
 
 # 安全型轉換函式
 def safe_int(value):
@@ -85,7 +86,3 @@ def records():
     records = c.fetchall()
     conn.close()
     return render_template('records.html', records=records)
-
-if __name__ == '__main__':
-    init_db()
-    app.run(debug=True)
