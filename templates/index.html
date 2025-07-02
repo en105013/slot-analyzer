@@ -1,72 +1,25 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>老虎機 RTP 分析</title>
-    <style>
-        body { font-family: "Segoe UI", sans-serif; margin: 40px; background-color: #f0f2f5; }
-        h1 { color: #333; }
-        form {
-            background: #fff; padding: 20px; border-radius: 10px;
-            max-width: 600px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        label { display: block; margin-top: 15px; font-weight: bold; }
-        input { width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box; }
-        button {
-            margin-top: 20px; padding: 10px 25px; font-size: 16px;
-            background-color: #28a745; color: #fff; border: none;
-            border-radius: 8px; cursor: pointer;
-        }
-        button:hover { background-color: #218838; }
-        .footer { margin-top: 30px; }
-        .bet-suggestion {
-            margin-top: 20px; padding: 15px; background-color: #fff8e1;
-            border-left: 5px solid #ffc107; border-radius: 6px;
-        }
-    </style>
+    <title>老虎機分析系統</title>
 </head>
 <body>
-    <h1>🎰 老虎機 RTP 評估系統</h1>
-
-    <form method="post">
-        <label>本金（一次設定即可）：</label>
-        <input type="number" name="capital" value="{{ capital or '' }}" required>
-
-        <label>機台名稱</label>
-        <input type="text" name="name" required>
-
-        <label>未開轉數</label>
-        <input type="number" name="no_bonus_spin" required>
-
-        <label>前一次免費遊戲轉數</label>
-        <input type="number" name="last_bonus_spin" required>
-
-        <label>前兩次免費遊戲轉數</label>
-        <input type="number" name="second_last_bonus_spin" required>
-
-        <label>今日下注金額</label>
-        <input type="number" name="today_bet" required>
-
-        <label>今日得分率（例如 0.92）</label>
-        <input type="number" step="0.01" name="today_rtp" required>
-
-        <label>近30日總投注金額</label>
-        <input type="number" name="last30_bet" required>
-
-        <label>近30日得分率（例如 0.94）</label>
-        <input type="number" step="0.01" name="last30_rtp" required>
-
-        {% if suggested_bet %}
-        <div class="bet-suggestion">
-            💡 <strong>建議下注金額：</strong> {{ suggested_bet }}
-        </div>
-        {% endif %}
-
-        <button type="submit">提交紀錄</button>
+    <h1>🎰 老虎機分析系統</h1>
+    <form method="POST">
+        <label>本金：</label><input type="number" name="capital" value="{{ capital }}"><br><br>
+        <label>機台名稱：</label><input type="text" name="name"><br>
+        <label>未開轉數：</label><input type="number" name="no_bonus_spin"><br>
+        <label>前一次免費遊戲轉數：</label><input type="number" name="last_bonus_spin"><br>
+        <label>前兩次免費遊戲轉數：</label><input type="number" name="second_last_bonus_spin"><br>
+        <label>今日下注金額：</label><input type="number" name="today_bet"><br>
+        <label>今日得分率：</label><input type="text" name="today_rtp"><br>
+        <label>近30日下注總額：</label><input type="number" name="last30_bet"><br>
+        <label>近30日得分率：</label><input type="text" name="last30_rtp"><br>
+        <button type="submit">送出分析</button>
     </form>
 
-    <div class="footer">
-        <p><a href="/records">查看歷史紀錄 ➜</a> ｜ <a href="/bonus_event">更新免費遊戲趨勢 ➜</a></p>
-    </div>
+    {% if suggested_bet %}
+    <h2>💡 推薦下注金額：{{ suggested_bet }}</h2>
+    {% endif %}
 </body>
 </html>
