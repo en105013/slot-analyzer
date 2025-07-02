@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>歷史紀錄 - 老虎機 RTP 分析</title>
+    <style>
+        body { font-family: "Segoe UI", sans-serif; margin: 40px; background-color: #f8f9fa; }
+        h1 { color: #333; }
+        table {
+            width: 100%; border-collapse: collapse; margin-top: 25px;
+            background-color: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        th, td { padding: 10px 8px; border: 1px solid #ddd; text-align: center; }
+        th { background-color: #007bff; color: #fff; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        .back { margin-top: 30px; }
+        .back a { text-decoration: none; color: #007bff; }
+    </style>
+</head>
+<body>
+    <h1>📊 歷史紀錄查詢</h1>
+    <table>
+        <tr>
+            <th>時間</th>
+            <th>機台</th>
+            <th>未開</th>
+            <th>前一次</th>
+            <th>前兩次</th>
+            <th>下注</th>
+            <th>RTP</th>
+            <th>狀態</th>
+            <th>分數</th>
+            <th>建議</th>
+            <th>建議下注</th>
+        </tr>
+        {% for r in records %}
+        <tr>
+            <td>{{ r[13] }}</td>
+            <td>{{ r[1] }}</td>
+            <td>{{ r[2] }}</td>
+            <td>{{ r[3] }}</td>
+            <td>{{ r[4] }}</td>
+            <td>{{ r[5] }}</td>
+            <td>{{ r[8] }}</td>
+            <td>{{ r[10] }}</td>
+            <td>{{ r[9] }}</td>
+            <td>{{ r[11] }}</td>
+            <td>{{ r[12] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <div class="back">
+        <p><a href="/">← 返回首頁</a></p>
+    </div>
+</body>
+</html>

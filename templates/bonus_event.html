@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>免費遊戲後狀態更新</title>
+    <style>
+        body { font-family: "Segoe UI", sans-serif; background-color: #f0f2f5; margin: 40px; }
+        h1 { color: #333; }
+        form {
+            background: #fff; padding: 20px; border-radius: 10px;
+            max-width: 600px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        label { display: block; margin-top: 15px; font-weight: bold; }
+        input, select { width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box; }
+        button {
+            margin-top: 20px; padding: 10px 25px; font-size: 16px;
+            background-color: #007bff; color: #fff; border: none;
+            border-radius: 8px; cursor: pointer;
+        }
+        button:hover { background-color: #0056b3; }
+        .result {
+            margin-top: 30px; background-color: #fff; padding: 15px;
+            border-left: 6px solid #2196f3; border-radius: 8px;
+        }
+        .back { margin-top: 20px; }
+        .back a { color: #007bff; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>📊 免費遊戲後更新機台狀態</h1>
+
+    <form method="post">
+        <label>機台名稱</label>
+        <input type="text" name="name" required>
+
+        <label>第幾次免費遊戲</label>
+        <select name="stage" required>
+            <option value="1">第一次</option>
+            <option value="2">第二次</option>
+            <option value="3">第三次</option>
+        </select>
+
+        <label>此區段下注金額</label>
+        <input type="number" name="bet" required>
+
+        <label>此區段得分金額</label>
+        <input type="number" name="win" required>
+
+        <button type="submit">提交並分析趨勢</button>
+    </form>
+
+    {% if trend_text %}
+    <div class="result">
+        <p><strong>RTP 歷史：</strong> {{ rtp_list }}</p>
+        <p><strong>趨勢判斷：</strong> {{ trend_text }}</p>
+        <p><strong>建議行動：</strong> {{ suggestion }}</p>
+    </div>
+    {% endif %}
+
+    <div class="back">
+        <p><a href="/">← 返回首頁</a></p>
+    </div>
+</body>
+</html>
