@@ -1,10 +1,6 @@
-
 from flask import Flask, render_template, request, redirect
 import sqlite3
 import time
-
-app = Flask(__name__)
-init_db()  # 確保部署後會自動建立資料庫
 
 # 安全型轉換函式
 def safe_int(value):
@@ -44,6 +40,9 @@ def init_db():
     ''')
     conn.commit()
     conn.close()
+
+app = Flask(__name__)
+init_db()  # ✅ 放這裡才正確：確保資料表在應用啟動時就會建立
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
