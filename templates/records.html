@@ -9,13 +9,23 @@
         <tr>
             <th>機台</th><th>未開</th><th>前一次</th><th>前兩次</th>
             <th>今日得分率</th><th>30日得分率</th><th>今日下注</th><th>30日下注</th>
-            <th>狀態</th><th>分數</th><th>建議</th><th>推薦下注</th><th>時間</th>
+            <th>分數</th><th>狀態</th><th>建議</th><th>推薦下注</th><th>時間</th>
         </tr>
         {% for row in records %}
         <tr>
-            <td>{{ row[1] }}</td><td>{{ row[2] }}</td><td>{{ row[3] }}</td><td>{{ row[4] }}</td>
-            <td>{{ row[8] }}</td><td>{{ row[7] }}</td><td>{{ row[5] }}</td><td>{{ row[6] }}</td>
-            <td>{{ row[9] }}</td><td>{{ row[10] }}</td><td>{{ row[11] }}</td><td>{{ row[12] }}</td><td>{{ row[13] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[4] }}</td>
+            <td>{{ row[5] }}</td>  <!-- 今日得分率 -->
+            <td>{{ row[6] }}</td>  <!-- 30日得分率 -->
+            <td>{{ row[7] }}</td>  <!-- 今日下注 -->
+            <td>{{ row[8] }}</td>  <!-- 30日下注 -->
+            <td>{{ row[9] }}</td>  <!-- 分數 -->
+            <td>{{ row[10] }}</td> <!-- 狀態 -->
+            <td>{{ row[11] }}</td> <!-- 建議 -->
+            <td>{{ row[12] }}</td> <!-- 推薦下注 -->
+            <td>{{ row[13] }}</td> <!-- 時間 -->
         </tr>
         {% endfor %}
     </table>
